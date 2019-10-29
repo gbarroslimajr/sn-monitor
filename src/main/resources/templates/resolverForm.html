@@ -9,29 +9,32 @@
 </head>
 <body>
 
-    <form th:action="@{/api/resolve/get_city/}" method="get" th:object="${ip}">
+    <form th:action="@{/api/resolve/get_city}" method="get" th:object="${ip}">
         Ip address<br>
-        <input type="text" name="ip_addr" th:value="${ip.ip}">
+        <input type="text" name="ip">
+        <br>
+        <input type="submit" value="Get city">
         <br>
     </form>
 
     <br>
     <br>
 
-    <form th:action="@{/api/resolve/get_addr/}" method="get" th:object="${coords}">
+    <form th:action="@{/api/resolve/get_addr}" method="get" th:object="${coords}">
         Coordinates<br>
         <table>
             <tr>
                 <td>
                     Latitude<br>
-                    <input type="text" name="latitude" th:value="${coords.lat}">
+                    <input type="text" name="lat">
                 </td>
                 <td>
                     Longitude<br>
-                    <input type="text" name="longitude" th:value="${coords.lon}">
+                    <input type="text" name="lon">
                 </td>
             </tr>
         </table>
+        <input type="submit" value="Get Address">
         <br>
     </form>
 
