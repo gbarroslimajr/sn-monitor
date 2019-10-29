@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Data resolver</title>
+</head>
+<body>
+
+    <form th:action="@{/api/resolve/get_city/}" method="get" th:object="${ip}">
+        Ip address<br>
+        <input type="text" name="ip_addr" th:value="${ip.ip}">
+        <br>
+    </form>
+
+    <br>
+    <br>
+
+    <form th:action="@{/api/resolve/get_addr/}" method="get" th:object="${coords}">
+        Coordinates<br>
+        <table>
+            <tr>
+                <td>
+                    Latitude<br>
+                    <input type="text" name="latitude" th:value="${coords.lat}">
+                </td>
+                <td>
+                    Longitude<br>
+                    <input type="text" name="longitude" th:value="${coords.lon}">
+                </td>
+            </tr>
+        </table>
+        <br>
+    </form>
+
+</body>
+</html>
