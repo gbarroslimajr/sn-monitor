@@ -1,5 +1,6 @@
 package com.commerce.sn_monitor.api;
 
+import com.commerce.sn_monitor.domain.Bank;
 import com.commerce.sn_monitor.domain.Company;
 import com.commerce.sn_monitor.domain.Location;
 import com.commerce.sn_monitor.services.LookupDataWebService;
@@ -36,5 +37,11 @@ public class DataResolveRestController
     public Company fetchCompany(@RequestParam String query)
     {
         return dataService.getCompany(query);
+    }
+
+    @GetMapping("/get_bank")
+    public Bank fetchBank(@RequestParam String query)
+    {
+        return dataService.getBank(query);
     }
 }

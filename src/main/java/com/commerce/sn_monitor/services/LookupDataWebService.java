@@ -1,5 +1,6 @@
 package com.commerce.sn_monitor.services;
 
+import com.commerce.sn_monitor.domain.Bank;
 import com.commerce.sn_monitor.domain.Company;
 import com.commerce.sn_monitor.domain.Location;
 
@@ -11,4 +12,6 @@ public interface LookupDataWebService
     Location getAddress(Float latitude, Float longitude);
 
     Company getCompany(String query);
+
+    Bank getBank(String query);
 }

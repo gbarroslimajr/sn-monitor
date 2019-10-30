@@ -6,8 +6,6 @@ import com.commerce.sn_monitor.domain.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -90,6 +88,30 @@ public class DaDataWebService implements LookupDataWebService
         CompanyResource companyRes = (CompanyResource)res.getBody();
 
         return companyRes.getFirst();
+    }
+
+    @Override
+    public Bank getBank(String query)
+    {
+        String bankEndpoint = conf.ENDPOINT + "/suggest/bank";
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("query", query);
+
+        HttpHeaders headers = getRequiredHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<HashMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
+
+        ResponseEntity res = rest.postForEntity(
+                bankEndpoint,
+                requestEntity,
+                BankResource.class
+        );
+        log.info(res.getStatusCode().toString());
+        BankResource bankRes = (BankResource)res.getBody();
+
+        return bankRes.getFirst();
     }
 
     private HttpHeaders getRequiredHeaders()
