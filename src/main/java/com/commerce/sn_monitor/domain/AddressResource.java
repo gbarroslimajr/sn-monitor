@@ -8,4 +8,11 @@ import java.util.List;
 public class AddressResource
 {
     private List<Location> suggestions;
+
+    public Location getFirst()
+    {
+        if (suggestions.size() == 0)
+            return new Location();
+        return suggestions.get(0);
+    }
 }

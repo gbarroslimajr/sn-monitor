@@ -10,6 +10,6 @@ public class Location
 
     private String value;
     private String unrestricted_value;
-    private HashMap<String, String> data;
+    private LocationData data;
 
 }

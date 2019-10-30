@@ -1,52 +1,72 @@
 package com.commerce.sn_monitor.services;
 
+import com.commerce.sn_monitor.configs.DaDataApiConfig;
+import com.commerce.sn_monitor.domain.AddressResource;
 import com.commerce.sn_monitor.domain.Location;
+import com.commerce.sn_monitor.domain.LocationResource;
+
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @Service
-@ConfigurationProperties(prefix = "com.commerce.sn-monitor.data-resolver")
 public class DaDataWebService implements LookupDataWebService
 {
-    private String API_TOKEN;
-    private String ENDPOINT;
     private RestTemplate rest;
+    private DaDataApiConfig conf;
 
-    public DaDataWebService(RestTemplate rest)
+    public DaDataWebService(RestTemplate rest, DaDataApiConfig conf)
     {
         this.rest = rest;
+        this.conf = conf;
     }
 
     @Override
     public Location getAddress(String ipAddress)
     {
-        String addressEndpoint = this.ENDPOINT + "/iplocate/address";
-        log.info(addressEndpoint);
-        log.info(ipAddress);
+        String ipEndpoint = conf.ENDPOINT + "/iplocate/address?ip={ipAddress}";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", "application/json");
-        headers.set("Authorization", "Token " + this.API_TOKEN);
+        headers.set("Authorization", "Token " + conf.API_TOKEN);
 
         HttpEntity requestEntity = new HttpEntity(headers);
 
-        ResponseEntity res = rest.exchange(addressEndpoint, HttpMethod.GET, requestEntity, Location.class, ipAddress);
-        log.info(res.getStatusCode().toString());
+        LocationResource locRes = rest.exchange(
+                ipEndpoint,
+                HttpMethod.GET,
+                requestEntity,
+                LocationResource.class,
+                ipAddress
+        ).getBody();
 
-        return (Location)res.getBody();
+        return locRes.getLocation();
     }
 
     @Override
     public Location getAddress(Float latitude, Float longitude)
     {
-        return null;
+        String geoEndpoint = conf.ENDPOINT + "/geolocate/address?lat={latitude}&lon={longitude}";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", "application/json");
+        headers.set("Authorization", "Token " + conf.API_TOKEN);
+
+        HttpEntity requestEntity = new HttpEntity(headers);
+
+        AddressResource addrRes = rest.exchange(
+                geoEndpoint,
+                HttpMethod.GET,
+                requestEntity,
+                AddressResource.class,
+                latitude,
+                longitude
+        ).getBody();
+
+        return addrRes.getFirst();
     }
 }
