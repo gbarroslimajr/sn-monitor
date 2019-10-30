@@ -38,5 +38,13 @@
         <br>
     </form>
 
+    <form th:action="@{/api/resolve/get_company}" method="get">
+        Find company by available info<br>
+        <input type="text" name="query">
+        <br>
+        <input type="submit" value="Get company info">
+        <br>
+    </form>
+
 </body>
 </html>

@@ -76,4 +76,6 @@ public class LocationData
     private String fias_code;
     private String fias_actuality_state;
     private String city_area;
+    private String source;
+    private String qc;
 }

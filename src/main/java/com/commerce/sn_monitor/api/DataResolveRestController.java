@@ -1,5 +1,6 @@
 package com.commerce.sn_monitor.api;
 
+import com.commerce.sn_monitor.domain.Company;
 import com.commerce.sn_monitor.domain.Location;
 import com.commerce.sn_monitor.services.LookupDataWebService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +30,11 @@ public class DataResolveRestController
     public Location fetchAddress(@RequestParam Float lat, @RequestParam Float lon)
     {
         return dataService.getAddress(lat, lon);
+    }
+
+    @GetMapping("/get_company")
+    public Company fetchCompany(@RequestParam String query)
+    {
+        return dataService.getCompany(query);
     }
 }

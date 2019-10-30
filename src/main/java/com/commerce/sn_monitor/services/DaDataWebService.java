@@ -1,16 +1,16 @@
 package com.commerce.sn_monitor.services;
 
 import com.commerce.sn_monitor.configs.DaDataApiConfig;
-import com.commerce.sn_monitor.domain.AddressResource;
-import com.commerce.sn_monitor.domain.Location;
-import com.commerce.sn_monitor.domain.LocationResource;
+import com.commerce.sn_monitor.domain.*;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
 
 @Slf4j
 @Service
@@ -30,19 +30,18 @@ public class DaDataWebService implements LookupDataWebService
     {
         String ipEndpoint = conf.ENDPOINT + "/iplocate/address?ip={ipAddress}";
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Accept", "application/json");
-        headers.set("Authorization", "Token " + conf.API_TOKEN);
-
+        HttpHeaders headers = getRequiredHeaders();
         HttpEntity requestEntity = new HttpEntity(headers);
 
-        LocationResource locRes = rest.exchange(
+        ResponseEntity res = rest.exchange(
                 ipEndpoint,
                 HttpMethod.GET,
                 requestEntity,
                 LocationResource.class,
                 ipAddress
-        ).getBody();
+        );
+        log.info(res.getStatusCode().toString());
+        LocationResource locRes = (LocationResource)res.getBody();
 
         return locRes.getLocation();
     }
@@ -52,21 +51,52 @@ public class DaDataWebService implements LookupDataWebService
     {
         String geoEndpoint = conf.ENDPOINT + "/geolocate/address?lat={latitude}&lon={longitude}";
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Accept", "application/json");
-        headers.set("Authorization", "Token " + conf.API_TOKEN);
-
+        HttpHeaders headers = getRequiredHeaders();
         HttpEntity requestEntity = new HttpEntity(headers);
 
-        AddressResource addrRes = rest.exchange(
+        ResponseEntity res = rest.exchange(
                 geoEndpoint,
                 HttpMethod.GET,
                 requestEntity,
                 AddressResource.class,
                 latitude,
                 longitude
-        ).getBody();
+        );
+        log.info(res.getStatusCode().toString());
+        AddressResource addrRes = (AddressResource)res.getBody();
 
         return addrRes.getFirst();
+    }
+
+    @Override
+    public Company getCompany(String query)
+    {
+        String companyEndpoint = conf.ENDPOINT + "/suggest/party";
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("query", query);
+
+        HttpHeaders headers = getRequiredHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<HashMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
+
+        ResponseEntity res = rest.postForEntity(
+                companyEndpoint,
+                requestEntity,
+                CompanyResource.class
+        );
+        log.info(res.getStatusCode().toString());
+        CompanyResource companyRes = (CompanyResource)res.getBody();
+
+        return companyRes.getFirst();
+    }
+
+    private HttpHeaders getRequiredHeaders()
+    {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", "application/json");
+        headers.set("Authorization", "Token " + conf.API_TOKEN);
+        return headers;
     }
 }

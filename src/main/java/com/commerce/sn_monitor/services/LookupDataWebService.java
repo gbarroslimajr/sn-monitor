@@ -1,5 +1,6 @@
 package com.commerce.sn_monitor.services;
 
+import com.commerce.sn_monitor.domain.Company;
 import com.commerce.sn_monitor.domain.Location;
 
 public interface LookupDataWebService
@@ -8,4 +9,6 @@ public interface LookupDataWebService
     Location getAddress(String ipAddress);
 
     Location getAddress(Float latitude, Float longitude);
+
+    Company getCompany(String query);
 }
