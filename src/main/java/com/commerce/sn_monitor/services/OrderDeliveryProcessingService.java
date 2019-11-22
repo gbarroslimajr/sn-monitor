@@ -5,10 +5,12 @@ import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
 
+import java.util.List;
+
 public interface OrderDeliveryProcessingService
 {
 
     ImlOrderDeliveryResponse makeDeliveryRequest(ImlOrderDeliveryRequest order);
 
-    ImlOrderDeliveryStatus getDeliveryStatus(ImlOrderDeliveryStatusRequest statusRequest);
+    List<ImlOrderDeliveryStatus> getOrdersStatus(ImlOrderDeliveryStatusRequest statusRequest);
 }

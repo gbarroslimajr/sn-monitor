@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Base64;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -34,7 +35,7 @@ public class ImlWebService implements OrderDeliveryProcessingService
     }
 
     @Override
-    public ImlOrderDeliveryStatus getDeliveryStatus(ImlOrderDeliveryStatusRequest statusRequest)
+    public List<ImlOrderDeliveryStatus> getOrdersStatus(ImlOrderDeliveryStatusRequest statusRequest)
     {
         String statusEndpoint = conf.ENDPOINT + "/GetStatuses";
 

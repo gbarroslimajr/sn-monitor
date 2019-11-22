@@ -32,7 +32,7 @@ public class OrderProcessingController
     @GetMapping("/status")
     public ResponseEntity<ImlOrderDeliveryStatus> fetchOrderStatus(ImlOrderDeliveryStatusRequest statusRequest)
     {
-        ImlOrderDeliveryStatus status = deliveryService.getDeliveryStatus(statusRequest);
+        ImlOrderDeliveryStatus status = deliveryService.getOrdersStatus(statusRequest);
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 }
