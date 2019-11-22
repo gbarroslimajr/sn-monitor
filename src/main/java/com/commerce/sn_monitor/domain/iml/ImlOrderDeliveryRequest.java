@@ -1,4 +1,4 @@
-package com.commerce.sn_monitor.domain;
+package com.commerce.sn_monitor.domain.iml;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Data
-public class OrderDeliveryRequest
+public class ImlOrderDeliveryRequest
 {
 
     @JsonProperty("Test")
@@ -96,5 +96,5 @@ public class OrderDeliveryRequest
     private String draft;
 
     @JsonProperty("GoodItems")
-    private List<OrderItem> goodItems;
+    private List<ImlOrderItem> goodItems;
 }

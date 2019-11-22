@@ -1,8 +1,8 @@
 package com.commerce.sn_monitor.services;
 
 import com.commerce.sn_monitor.configs.DaDataApiConfig;
-import com.commerce.sn_monitor.domain.*;
 
+import com.commerce.sn_monitor.domain.dadata.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

@@ -1,13 +1,14 @@
 package com.commerce.sn_monitor.services;
 
-import com.commerce.sn_monitor.domain.OrderDeliveryRequest;
-import com.commerce.sn_monitor.domain.OrderDeliveryResponse;
-import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
-import com.commerce.sn_monitor.domain.OrderDeliveryStatusRequest;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
 
 public interface OrderDeliveryProcessingService
 {
-    OrderDeliveryResponse makeDeliveryRequest(OrderDeliveryRequest order);
 
-    OrderDeliveryStatus getDeliveryStatus(OrderDeliveryStatusRequest statusRequest);
+    ImlOrderDeliveryResponse makeDeliveryRequest(ImlOrderDeliveryRequest order);
+
+    ImlOrderDeliveryStatus getDeliveryStatus(ImlOrderDeliveryStatusRequest statusRequest);
 }

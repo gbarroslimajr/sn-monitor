@@ -1,8 +1,8 @@
 package com.commerce.sn_monitor.api;
 
-import com.commerce.sn_monitor.domain.Bank;
-import com.commerce.sn_monitor.domain.Company;
-import com.commerce.sn_monitor.domain.Location;
+import com.commerce.sn_monitor.domain.dadata.Bank;
+import com.commerce.sn_monitor.domain.dadata.Company;
+import com.commerce.sn_monitor.domain.dadata.Location;
 import com.commerce.sn_monitor.services.LookupDataWebService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

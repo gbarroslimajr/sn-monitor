@@ -1,8 +1,6 @@
-package com.commerce.sn_monitor.domain;
+package com.commerce.sn_monitor.domain.dadata;
 
 import lombok.Data;
-
-import java.util.HashMap;
 
 @Data
 public class Location

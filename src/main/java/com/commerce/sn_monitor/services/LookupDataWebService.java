@@ -1,8 +1,8 @@
 package com.commerce.sn_monitor.services;
 
-import com.commerce.sn_monitor.domain.Bank;
-import com.commerce.sn_monitor.domain.Company;
-import com.commerce.sn_monitor.domain.Location;
+import com.commerce.sn_monitor.domain.dadata.Bank;
+import com.commerce.sn_monitor.domain.dadata.Company;
+import com.commerce.sn_monitor.domain.dadata.Location;
 
 public interface LookupDataWebService
 {
