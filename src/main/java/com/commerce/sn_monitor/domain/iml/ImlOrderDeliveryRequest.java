@@ -11,7 +11,7 @@ public class ImlOrderDeliveryRequest
 {
 
     @JsonProperty("Test")
-    private String test;
+    private String test = "True";
 
     @JsonProperty("Job")
     private String job;

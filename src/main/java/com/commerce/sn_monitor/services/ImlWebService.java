@@ -5,12 +5,14 @@ import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Base64;
 
+@Slf4j
 @Service
 public class ImlWebService implements OrderDeliveryProcessingService
 {
@@ -37,8 +39,7 @@ public class ImlWebService implements OrderDeliveryProcessingService
         String statusEndpoint = conf.ENDPOINT + "/GetStatuses";
 
         HttpHeaders headers = getRequiredHeaders();
-
-        ImlOrderDeliveryStatusRequest requestInfo = new ImlOrderDeliveryStatusRequest();
+        log.debug(statusRequest.getTest());
 
         return null;
     }

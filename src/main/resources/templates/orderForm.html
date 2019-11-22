@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
     <title>Order</title>
 </head>
 <body>
+    <table>
+        <tr>
+            <td>
+                Order state and status
+                <form th:action="@{/order/status}" method="get" th:object="${statusRequest}">
+                    Delivery ID<br>
+                    <input type="text" name="deliveryId">
+                    <br>
+                    Delivery start date<br>
+                    <input type="text" name="deliveryStartDate">
+                    <br>
+                    Delivery end date<br>
+                    <input type="text" name="deliveryEndDate">
+                    <br>
+                    Order state<br>
+                    <input type="text" name="state">
+                    <br>
+                    Order status<br>
+                    <input type="text" name="orderStatus">
+                    <br>
+                    Receiving region<br>
+                    <input type="text" name="regionTo">
+                    <br>
+                    <input type="submit" value="Get order delivery status">
+                </form>
+            </td>
+            <td>
 
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
