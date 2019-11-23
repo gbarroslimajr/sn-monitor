@@ -1,10 +1,11 @@
 package com.commerce.sn_monitor.domain.iml;
 
+import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class ImlOrderDeliveryStatusRequest
+public class ImlOrderDeliveryStatusRequest implements OrderDeliveryStatus
 {
 
     @JsonProperty("Test")
@@ -14,16 +15,16 @@ public class ImlOrderDeliveryStatusRequest
     private String job;
 
     @JsonProperty("CustomerOrder")
-    private String customerOrder;
+    private String deliveryId;
 
     @JsonProperty("DeliveryDateStart")
-    private String deliveryDateStart;
+    private String deliveryStartDate;
 
     @JsonProperty("DeliveryDateEnd")
-    private String deliveryDateEnd;
+    private String deliveryEndDate;
 
     @JsonProperty("State")
-    private String state;
+    private String orderState;
 
     @JsonProperty("OrderStatus")
     private String orderStatus;
@@ -35,7 +36,7 @@ public class ImlOrderDeliveryStatusRequest
     private String creationDateEnd;
 
     @JsonProperty("RegionTo")
-    private String regionTo;
+    private String deliveryRegion;
 
     @JsonProperty("RegionFrom")
     private String regionFrom;

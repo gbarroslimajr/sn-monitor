@@ -4,10 +4,10 @@ import java.util.Date;
 
 public interface OrderDeliveryStatus
 {
-    String deliveryId();
-    Date deliveryStartDate();
-    Date deliveryEndDate();
-    String orderState();
-    String orderStatus();
-    String deliveryRegion();
+    String getDeliveryId();
+    Date getDeliveryStartDate();
+    Date getDeliveryEndDate();
+    String getOrderState();
+    String getOrderStatus();
+    String getDeliveryRegion();
 }
