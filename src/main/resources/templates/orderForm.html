@@ -29,13 +29,34 @@
                     <input type="text" name="orderStatus">
                     <br>
                     Delivery region<br>
-                    <input type="text" name="regionTo">
+                    <input type="text" name="deliveryRegion">
                     <br>
                     <input type="submit" value="Get order delivery status">
                 </form>
             </td>
             <td>
-
+                Make an order
+                <form th:action="@{/order/create}" method="post" th:object="${orderRequest}">
+                    Delivery ID<br>
+                    <input type="text" name="deliveryId">
+                    <br>
+                    Delivery start date<br>
+                    <input type="text" name="deliveryStartDate">
+                    <br>
+                    Delivery end date<br>
+                    <input type="text" name="deliveryEndDate">
+                    <br>
+                    Order state<br>
+                    <input type="text" name="orderState">
+                    <br>
+                    Order status<br>
+                    <input type="text" name="orderStatus">
+                    <br>
+                    Delivery region<br>
+                    <input type="text" name="deliveryRegion">
+                    <br>
+                    <input type="submit" value="Create the order">
+                </form>
             </td>
         </tr>
     </table>
