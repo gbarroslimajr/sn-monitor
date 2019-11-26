@@ -12,7 +12,13 @@
         <tr>
             <td>
                 Order state and status
-                <form th:action="@{/order/status}" method="get" th:object="${statusRequest}">
+                <form th:action="@{/order/iml/status}" method="get" th:object="${statusRequest}">
+                    Delivery Service<br>
+                    <select name="@type">
+                        <option value="ImlOrderDeliveryStatusRequest">IML</option>
+                        <option value="CdekOrderDeliveryStatusRequest">CDEK</option>
+                    </select>
+                    <br>
                     Delivery ID<br>
                     <input type="text" name="deliveryId">
                     <br>
@@ -36,7 +42,13 @@
             </td>
             <td>
                 Make an order
-                <form th:action="@{/order/create}" method="post" th:object="${orderRequest}">
+                <form th:action="@{/order/iml/create}" method="post" th:object="${orderRequest}">
+                    Delivery Service<br>
+                    <select name="@type">
+                        <option value="ImlOrderDeliveryRequest">IML</option>
+                        <option value="CdekOrderDeliveryRequest">CDEK</option>
+                    </select>
+                    <br>
                     Delivery ID<br>
                     <input type="text" name="deliveryId">
                     <br>

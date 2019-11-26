@@ -1,30 +1,32 @@
 package com.commerce.sn_monitor.domain.iml;
 
+import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.Setter;
 
 @Data
-public class ImlOrderDeliveryStatus
+public class ImlOrderDeliveryStatus implements OrderDeliveryStatus
 {
 
     @JsonProperty("Number")
-    private String Number;
+    private String deliveryId;
 
     @JsonProperty("State")
-    private String State;
+    private String orderState;
 
     @JsonProperty("OrderStatus")
-    private String OrderStatus;
+    private String orderStatus;
 
     @JsonProperty("StateDescription")
-    private String StateDescription;
+    private String orderStateDescription;
 
     @JsonProperty("OrderStatusDescription")
-    private String OrderStatusDescription;
+    private String orderStatusDescription;
 
     @JsonProperty("StatusDate")
-    private String StatusDate;
+    private String orderStatusDate;
 
     @JsonProperty("ReturnPayment")
-    private String ReturnPayment;
+    private String refundState;
 }

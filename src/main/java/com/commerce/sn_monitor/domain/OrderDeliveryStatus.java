@@ -5,9 +5,18 @@ import java.util.Date;
 public interface OrderDeliveryStatus
 {
     String getDeliveryId();
-    Date getDeliveryStartDate();
-    Date getDeliveryEndDate();
     String getOrderState();
     String getOrderStatus();
-    String getDeliveryRegion();
+    String getOrderStateDescription();
+    String getOrderStatusDescription();
+    String getOrderStatusDate();
+    String getRefundState();
+
+    void setDeliveryId(String id);
+    void setOrderState(String orderState);
+    void setOrderStatus(String orderStatus);
+    void setOrderStateDescription(String orderStateDescription);
+    void setOrderStatusDescription(String orderStatusDescription);
+    void setOrderStatusDate(String orderStatusDate);
+    void setRefundState(String refundState);
 }

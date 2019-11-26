@@ -1,10 +1,11 @@
 package com.commerce.sn_monitor.domain.iml;
 
+import com.commerce.sn_monitor.domain.OrderItem;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class ImlOrderItem
+public class ImlOrderItem implements OrderItem
 {
 
     @JsonProperty("productNo")

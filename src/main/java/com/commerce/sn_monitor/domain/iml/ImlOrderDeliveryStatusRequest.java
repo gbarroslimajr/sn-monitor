@@ -1,11 +1,12 @@
 package com.commerce.sn_monitor.domain.iml;
 
+import com.commerce.sn_monitor.domain.OrderDeliveryRequest;
 import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class ImlOrderDeliveryStatusRequest implements OrderDeliveryStatus
+public class ImlOrderDeliveryStatusRequest implements OrderDeliveryRequest
 {
 
     @JsonProperty("Test")

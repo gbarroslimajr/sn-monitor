@@ -1,5 +1,6 @@
 package com.commerce.sn_monitor.domain.iml;
 
+import com.commerce.sn_monitor.domain.OrderDeliveryRequest;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -7,7 +8,7 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Data
-public class ImlOrderDeliveryRequest
+public class ImlOrderDeliveryRequest implements OrderDeliveryRequest
 {
 
     @JsonProperty("Test")

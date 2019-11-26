@@ -1,6 +1,7 @@
 package com.commerce.sn_monitor.services;
 
 import com.commerce.sn_monitor.configs.ImlApiConfig;
+import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
@@ -35,7 +36,7 @@ public class ImlWebService implements OrderDeliveryProcessingService
     }
 
     @Override
-    public List<ImlOrderDeliveryStatus> getOrdersStatus(ImlOrderDeliveryStatusRequest statusRequest)
+    public List<OrderDeliveryStatus> getOrdersStatus(ImlOrderDeliveryStatusRequest statusRequest)
     {
         String statusEndpoint = conf.ENDPOINT + "/GetStatuses";
 
