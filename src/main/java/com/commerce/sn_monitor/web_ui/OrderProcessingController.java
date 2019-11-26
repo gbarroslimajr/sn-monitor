@@ -1,5 +1,7 @@
 package com.commerce.sn_monitor.web_ui;
 
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
 import com.commerce.sn_monitor.services.OrderDeliveryProcessingService;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -34,5 +37,12 @@ public class OrderProcessingController
     {
         ImlOrderDeliveryStatus status = deliveryService.getOrdersStatus(statusRequest);
         return new ResponseEntity<>(status, HttpStatus.OK);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<ImlOrderDeliveryResponse> sendOrderDeliveryRequest(ImlOrderDeliveryRequest orderRequest)
+    {
+        ImlOrderDeliveryResponse response = deliveryService.makeDeliveryRequest(orderRequest);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
