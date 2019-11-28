@@ -1,7 +1,14 @@
 package com.commerce.sn_monitor.domain;
 
-import java.util.Date;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = ImlOrderDeliveryStatus.class, name = "ImlOrderDeliveryStatus")
+})
 public interface OrderDeliveryStatus
 {
     String getDeliveryId();

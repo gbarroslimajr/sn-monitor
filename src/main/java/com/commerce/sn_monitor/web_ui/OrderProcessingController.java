@@ -1,7 +1,6 @@
 package com.commerce.sn_monitor.web_ui;
 
-import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
-import com.commerce.sn_monitor.domain.OrderItem;
+import com.commerce.sn_monitor.domain.*;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
@@ -38,7 +37,7 @@ public class OrderProcessingController
     }
 
     @GetMapping("/status")
-    public ResponseEntity<ArrayList<OrderDeliveryStatus>> fetchOrderStatus(ImlOrderDeliveryStatusRequest statusRequest)
+    public ResponseEntity<ArrayList<OrderDeliveryStatus>> fetchOrderStatus(OrderDeliveryStatusRequest statusRequest)
     {
         ArrayList<OrderDeliveryStatus> status = (ArrayList<OrderDeliveryStatus>) deliveryService.getOrdersStatus(statusRequest);
 
@@ -46,9 +45,9 @@ public class OrderProcessingController
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ImlOrderDeliveryResponse> sendOrderDeliveryRequest(ImlOrderDeliveryRequest orderRequest)
+    public ResponseEntity<OrderDelivery> sendOrderDeliveryRequest(OrderDeliveryRequest orderRequest)
     {
-        ImlOrderDeliveryResponse response = deliveryService.makeDeliveryRequest(orderRequest);
+        OrderDelivery response = deliveryService.makeDeliveryRequest(orderRequest);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
