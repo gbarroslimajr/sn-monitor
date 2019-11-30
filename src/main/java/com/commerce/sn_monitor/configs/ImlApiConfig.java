@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Base64;
 
 @Configuration
-@ConfigurationProperties(prefix = "com.commerce.sn-monitor.delivery-service")
+@ConfigurationProperties(prefix = "com.commerce.sn-monitor.delivery-service.iml")
 @Data
 public class ImlApiConfig
 {

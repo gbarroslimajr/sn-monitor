@@ -9,16 +9,16 @@ public class ImlOrderItem implements OrderItem
 {
 
     @JsonProperty("productNo")
-    private String productNo;
+    private String id;
 
     @JsonProperty("productName")
-    private String productName;
+    private String name;
 
     @JsonProperty("productVariant")
-    private String productVariant;
+    private String version;
 
     @JsonProperty("productBarCode")
-    private String productBarCode;
+    private String barcode;
 
     @JsonProperty("couponCode")
     private String couponCode;
@@ -27,16 +27,16 @@ public class ImlOrderItem implements OrderItem
     private String discount;
 
     @JsonProperty("weightLine")
-    private String weightLine;
+    private String weight;
 
     @JsonProperty("amountLine")
-    private String amountLine;
+    private String cost;
 
     @JsonProperty("statisticalValueLine")
     private String statisticalValueLine;
 
     @JsonProperty("itemQuantity")
-    private String itemQuantity;
+    private String quantity;
 
     @JsonProperty("deliveryService")
     private String deliveryService;
@@ -45,7 +45,7 @@ public class ImlOrderItem implements OrderItem
     private String itemType;
 
     @JsonProperty("itemNote")
-    private String itemNote;
+    private String description;
 
     @JsonProperty("allowed")
     private String allowed;
