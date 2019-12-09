@@ -11,18 +11,12 @@ import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -38,23 +32,12 @@ public class ImlWebService
         this.conf = conf;
     }
 
-    public ImlOrderDeliveryResponse makeDeliveryRequest(ImlOrderDeliveryRequest order, Model model)
+    public ImlOrderDeliveryResponse makeDeliveryRequest(ImlOrderDeliveryRequest order)
     {
         String orderReqEndpoint = conf.ENDPOINT + "/CreateOrder";
-        String serviceCodesEndpoint = conf.VOC_ENDPOINT + "/service";
 
         HttpHeaders headers = getRequiredHeaders();
         HttpEntity requestEntity = new HttpEntity(headers);
-
-        ResponseEntity res = rest.exchange(
-            serviceCodesEndpoint,
-            HttpMethod.GET,
-            requestEntity,
-            new ParameterizedTypeReference<ArrayList<HashMap<String, String>>>() {}
-        );
-
-        model.addAttribute("services", res.getBody());
-        model.addAttribute("orderRequest", order);
 
         ImlOrderDeliveryResponse response = rest.postForObject(
             orderReqEndpoint,
@@ -91,6 +74,29 @@ public class ImlWebService
         }
 
         return Arrays.asList(response);
+    }
+
+    public List<? extends Map<String, String>> getServicesData()
+    {
+        String serviceCodesEndpoint = conf.VOC_ENDPOINT + "/service";
+
+        HttpHeaders headers = getRequiredHeaders();
+        HttpEntity requestEntity = new HttpEntity(headers);
+
+        ResponseEntity res = rest.exchange(
+            serviceCodesEndpoint,
+            HttpMethod.GET,
+            requestEntity,
+            new ParameterizedTypeReference<ArrayList<HashMap<String, String>>>() {}
+        );
+
+        if (res.getStatusCode() != HttpStatus.OK || res.getBody() == null)
+        {
+            log.error("No response from " + serviceCodesEndpoint);
+            return new ArrayList<>();
+        }
+
+        return (ArrayList<HashMap<String, String>>)res.getBody();
     }
 
     private HttpHeaders getRequiredHeaders()

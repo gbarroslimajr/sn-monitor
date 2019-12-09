@@ -1,6 +1,9 @@
 package com.commerce.sn_monitor.web_ui;
 
-import com.commerce.sn_monitor.domain.*;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
 import com.commerce.sn_monitor.services.CdekWebService;
 import com.commerce.sn_monitor.services.ImlWebService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping("/order")
@@ -31,6 +35,9 @@ public class OrderProcessingController
     @GetMapping("/iml")
     public String imlOrderForm(Model model)
     {
+        ArrayList<HashMap<String, String>> services = (ArrayList<HashMap<String, String>>) imlDeliveryService.getServicesData();
+        model.addAttribute("services", services);
+
         return "imlOrderForm";
     }
 
@@ -41,17 +48,18 @@ public class OrderProcessingController
     }
 
     @GetMapping("/iml/status")
-    public ResponseEntity<ArrayList<OrderDeliveryStatus>> fetchOrderStatus(OrderDeliveryStatusRequest statusRequest)
+    public ResponseEntity<ArrayList<ImlOrderDeliveryStatus>> fetchOrderStatus(ImlOrderDeliveryStatusRequest statusRequest)
     {
-        ArrayList<OrderDeliveryStatus> status = (ArrayList<OrderDeliveryStatus>) imlDeliveryService.getOrdersStatus(statusRequest);
+        ArrayList<ImlOrderDeliveryStatus> status = (ArrayList<ImlOrderDeliveryStatus>)
+            imlDeliveryService.getImlOrdersStatus(statusRequest);
 
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
     @PostMapping("/iml/create")
-    public ResponseEntity<OrderDelivery> sendOrderDeliveryRequest(OrderDeliveryRequest orderRequest)
+    public ResponseEntity<ImlOrderDeliveryResponse> sendOrderDeliveryRequest(ImlOrderDeliveryRequest orderRequest)
     {
-        OrderDelivery response = imlDeliveryService.makeDeliveryRequest(orderRequest);
+        ImlOrderDeliveryResponse response = imlDeliveryService.makeDeliveryRequest(orderRequest);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
