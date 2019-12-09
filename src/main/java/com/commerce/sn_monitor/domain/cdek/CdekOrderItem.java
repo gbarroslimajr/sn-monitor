@@ -4,17 +4,44 @@ import com.commerce.sn_monitor.domain.OrderItem;
 import lombok.Data;
 
 @Data
-public class CdekOrderItem implements OrderItem
+public class CdekOrderItem
 {
-    private String id;
-    private String barcode;
-    private String version;
-    private String quantity;
+	@JsonProperty("Name")
     private String name;
-    private String description;
+
+    @JsonProperty("Ware_Key")
+    private String ware_key;
+
+	@JsonProperty("Payment")
+    private String payment;
+
+    @JsonProperty("Cost")
     private String cost;
+
+	@JsonProperty("Weight")
     private String weight;
-    private String width;
-    private String height;
-    private String length;
+
+    @JsonProperty("Weight_gross")
+    private String weight_gross;
+
+    @JsonProperty("Amount")
+    private String amount;
+
+    @JsonProperty("Name_i18n")
+    private String name_i18n;
+
+    @JsonProperty("Brand")
+    private String brand;
+
+    @JsonProperty("Country_code")
+    private String country_code;
+
+    @JsonProperty("Material")
+    private String material;
+
+    @JsonProperty("Wifi_gsm")
+    private String wifi_gsm;
+
+    @JsonProperty("Url")
+    private String url;
 }
