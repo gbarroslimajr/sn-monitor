@@ -4,13 +4,20 @@ import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
 import lombok.Data;
 
 @Data
-public class CdekOrderDeliveryStatus implements OrderDeliveryStatus
+public class CdekOrderDeliveryStatus
 {
-    private String deliveryId;
-    private String orderState;
-    private String orderStatus;
-    private String orderStateDescription;
-    private String orderStatusDescription;
-    private String orderStatusDate;
-    private String refundState;
+    @JsonProperty("Code")
+    private String code;
+
+    @JsonProperty("Name")
+    private String name;
+
+    @JsonProperty("Date_time")
+    private String date_time;
+
+    @JsonProperty("Reason_code")
+    private String reason_code;
+
+    @JsonProperty("City")
+    private String city;
 }
