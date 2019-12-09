@@ -14,6 +14,7 @@ public class ImlApiConfig
     public String LOGIN;
     public String PASSWORD;
     public String ENDPOINT;
+    public String VOC_ENDPOINT;
 
     public String getBase64EncodedCredentials()
     {

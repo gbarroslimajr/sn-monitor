@@ -5,17 +5,28 @@ import com.commerce.sn_monitor.domain.OrderDelivery;
 import com.commerce.sn_monitor.domain.OrderDeliveryRequest;
 import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
 import com.commerce.sn_monitor.domain.OrderDeliveryStatusRequest;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
+import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
 @Service
-public class ImlWebService implements OrderDeliveryProcessingService
+public class ImlWebService
 {
 
     private RestTemplate rest;
@@ -27,22 +38,59 @@ public class ImlWebService implements OrderDeliveryProcessingService
         this.conf = conf;
     }
 
-    @Override
-    public OrderDelivery makeDeliveryRequest(OrderDeliveryRequest order)
+    public ImlOrderDeliveryResponse makeDeliveryRequest(ImlOrderDeliveryRequest order, Model model)
     {
+        String orderReqEndpoint = conf.ENDPOINT + "/CreateOrder";
+        String serviceCodesEndpoint = conf.VOC_ENDPOINT + "/service";
 
-        return null;
+        HttpHeaders headers = getRequiredHeaders();
+        HttpEntity requestEntity = new HttpEntity(headers);
+
+        ResponseEntity res = rest.exchange(
+            serviceCodesEndpoint,
+            HttpMethod.GET,
+            requestEntity,
+            new ParameterizedTypeReference<ArrayList<HashMap<String, String>>>() {}
+        );
+
+        model.addAttribute("services", res.getBody());
+        model.addAttribute("orderRequest", order);
+
+        ImlOrderDeliveryResponse response = rest.postForObject(
+            orderReqEndpoint,
+            requestEntity,
+            ImlOrderDeliveryResponse.class
+        );
+
+        if (response == null)
+        {
+            log.error("No response from " + orderReqEndpoint);
+            return new ImlOrderDeliveryResponse();
+        }
+
+        return response;
     }
 
-    @Override
-    public List<OrderDeliveryStatus> getOrdersStatus(OrderDeliveryStatusRequest statusRequest)
+    public List<ImlOrderDeliveryStatus> getImlOrdersStatus(ImlOrderDeliveryStatusRequest statusRequest)
     {
         String statusEndpoint = conf.ENDPOINT + "/GetStatuses";
-        ImlOrderDeliveryStatusRequest req = (ImlOrderDeliveryStatusRequest) statusRequest;
-        HttpHeaders headers = getRequiredHeaders();
-        log.debug(req.getTest());
 
-        return null;
+        HttpHeaders headers = getRequiredHeaders();
+        HttpEntity requestEntity = new HttpEntity(headers);
+
+        ImlOrderDeliveryStatus[] response = rest.postForObject(
+            statusEndpoint,
+            requestEntity,
+            ImlOrderDeliveryStatus[].class
+        );
+
+        if (response == null)
+        {
+            log.error("No response from" + statusEndpoint);
+            return new ArrayList<>();
+        }
+
+        return Arrays.asList(response);
     }
 
     private HttpHeaders getRequiredHeaders()

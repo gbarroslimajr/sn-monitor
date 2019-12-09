@@ -1,12 +1,8 @@
 package com.commerce.sn_monitor.web_ui;
 
 import com.commerce.sn_monitor.domain.*;
-import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
-import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
-import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
-import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
-import com.commerce.sn_monitor.services.OrderDeliveryProcessingService;
-import org.hibernate.criterion.Order;
+import com.commerce.sn_monitor.services.CdekWebService;
+import com.commerce.sn_monitor.services.ImlWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,32 +18,41 @@ import java.util.ArrayList;
 @RequestMapping("/order")
 public class OrderProcessingController
 {
-    private OrderDeliveryProcessingService deliveryService;
+    private ImlWebService imlDeliveryService;
+    private CdekWebService cdekDeliveryService;
 
     @Autowired
-    public OrderProcessingController(OrderDeliveryProcessingService deliveryService)
+    public OrderProcessingController(ImlWebService imlDeliveryService, CdekWebService cdekDeliveryService)
     {
-        this.deliveryService = deliveryService;
+        this.imlDeliveryService = imlDeliveryService;
+        this.cdekDeliveryService = cdekDeliveryService;
     }
 
-    @GetMapping
-    public String orderForm(Model model)
+    @GetMapping("/iml")
+    public String imlOrderForm(Model model)
     {
-        return "orderForm";
+        return "imlOrderForm";
     }
 
-    @GetMapping("/status")
+    @GetMapping("/cdek")
+    public String cdekOrderForm(Model model)
+    {
+        return "cdekOrderForm";
+    }
+
+    @GetMapping("/iml/status")
     public ResponseEntity<ArrayList<OrderDeliveryStatus>> fetchOrderStatus(OrderDeliveryStatusRequest statusRequest)
     {
-        ArrayList<OrderDeliveryStatus> status = (ArrayList<OrderDeliveryStatus>) deliveryService.getOrdersStatus(statusRequest);
+        ArrayList<OrderDeliveryStatus> status = (ArrayList<OrderDeliveryStatus>) imlDeliveryService.getOrdersStatus(statusRequest);
 
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/iml/create")
     public ResponseEntity<OrderDelivery> sendOrderDeliveryRequest(OrderDeliveryRequest orderRequest)
     {
-        OrderDelivery response = deliveryService.makeDeliveryRequest(orderRequest);
+        OrderDelivery response = imlDeliveryService.makeDeliveryRequest(orderRequest);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 }
