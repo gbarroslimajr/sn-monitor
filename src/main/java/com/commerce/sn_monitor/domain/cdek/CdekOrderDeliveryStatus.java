@@ -1,6 +1,7 @@
 package com.commerce.sn_monitor.domain.cdek;
 
 import com.commerce.sn_monitor.domain.OrderDeliveryStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data

@@ -2,6 +2,7 @@ package com.commerce.sn_monitor.domain.cdek;
 
 import com.commerce.sn_monitor.domain.OrderItem;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
 public class CdekOrderItem

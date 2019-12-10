@@ -22,12 +22,12 @@ public class CdekWebService
         this.rest = rest;
     }
 
-    public CdekOrderDelivery makeDeliveryRequest(OrderDeliveryRequest order)
+    public CdekOrderDelivery makeDeliveryRequest(CdekOrderDelivery order)
     {
         return null;
     }
 
-    public List<CdekOrderDeliveryStatus> getOrdersStatus(OrderDeliveryStatusRequest statusRequest)
+    public CdekOrderDelivery getOrdersStatus(CdekOrderDelivery statusRequest)
     {
         return null;
     }

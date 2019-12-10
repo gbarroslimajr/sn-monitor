@@ -36,8 +36,9 @@ public class ImlWebService
     {
         String orderReqEndpoint = conf.ENDPOINT + "/CreateOrder";
 
+        log.info(order.toString());
         HttpHeaders headers = getRequiredHeaders();
-        HttpEntity requestEntity = new HttpEntity(headers);
+        HttpEntity requestEntity = new HttpEntity(order, headers);
 
         ImlOrderDeliveryResponse response = rest.postForObject(
             orderReqEndpoint,
@@ -59,7 +60,7 @@ public class ImlWebService
         String statusEndpoint = conf.ENDPOINT + "/GetStatuses";
 
         HttpHeaders headers = getRequiredHeaders();
-        HttpEntity requestEntity = new HttpEntity(headers);
+        HttpEntity requestEntity = new HttpEntity(statusRequest, headers);
 
         ImlOrderDeliveryStatus[] response = rest.postForObject(
             statusEndpoint,
@@ -73,7 +74,7 @@ public class ImlWebService
             return new ArrayList<>();
         }
 
-        return Arrays.asList(response);
+        return new ArrayList<>(Arrays.asList(response));
     }
 
     public List<? extends Map<String, String>> getServicesData()

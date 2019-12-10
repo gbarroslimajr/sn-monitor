@@ -18,7 +18,7 @@ public class ImlApiConfig
 
     public String getBase64EncodedCredentials()
     {
-        byte[] encodedBytes = Base64.getEncoder().encode((this.LOGIN + this.PASSWORD).getBytes());
+        byte[] encodedBytes = Base64.getEncoder().encode((this.LOGIN + ':' + this.PASSWORD).getBytes());
         return new String(encodedBytes);
     }
 }

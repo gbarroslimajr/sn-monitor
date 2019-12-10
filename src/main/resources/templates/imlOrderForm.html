@@ -42,9 +42,8 @@
                     Service Code<br>
                     <select id="job" name="job">
                         <option th:each="service : ${services}"
-                                th:value="${service.code}"
-                                th:text="${service.description} (${service.code})"
-                                th:selected="$service.code==orderRequest.job"></option>
+                                th:value="${service['Code']}"
+                                th:text="${service['Description']}"></option>
                     </select>
                     <br>
                     Delivery ID<br>

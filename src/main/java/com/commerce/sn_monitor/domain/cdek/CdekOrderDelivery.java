@@ -1,9 +1,10 @@
 package com.commerce.sn_monitor.domain.cdek;
 
-import com.commerce.sn_monitor.domain.OrderItem;
-
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
+@Data
 public class CdekOrderDelivery
 {
 	@JsonProperty("Uuid")
@@ -52,7 +53,7 @@ public class CdekOrderDelivery
 	private CdekMoney value;
 	
 	@JsonProperty("Delivery_recipient_cost_adv")
-	private List<CdekThreSholdDelivery> delivery_recipient_cost_adv;
+	private List<CdekThresholdDelivery> delivery_recipient_cost_adv;
 	
 	@JsonProperty("Sender")
 	private CdekContactSender sender;
