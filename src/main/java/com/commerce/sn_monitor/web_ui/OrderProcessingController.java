@@ -1,6 +1,7 @@
 package com.commerce.sn_monitor.web_ui;
 
 import com.commerce.sn_monitor.domain.cdek.CdekOrderDelivery;
+import com.commerce.sn_monitor.domain.cdek.CdekOrderDeliveryStatusRequest;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryResponse;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
@@ -58,7 +59,7 @@ public class OrderProcessingController
     }
 
     @GetMapping("/cdek/status")
-    public ResponseEntity<CdekOrderDelivery> fetchOrderStatus(CdekOrderDelivery statusRequest)
+    public ResponseEntity<CdekOrderDelivery> fetchOrderStatus(CdekOrderDeliveryStatusRequest statusRequest)
     {
         CdekOrderDelivery status = cdekDeliveryService.getOrdersStatus(statusRequest);
 
