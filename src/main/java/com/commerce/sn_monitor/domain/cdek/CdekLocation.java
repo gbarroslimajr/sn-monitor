@@ -13,10 +13,10 @@ public class CdekLocation
 	private String code;
 	
 	@JsonProperty("Fias_guid")
-	private String fias_guid;
+	private String fiasGuid;
 	
 	@JsonProperty("Postal_code")
-	private String postal_code;
+	private String postalCode;
 	
 	@JsonProperty("Longitude")
 	private String longitude;
@@ -25,22 +25,22 @@ public class CdekLocation
 	private String latitude;
 	
 	@JsonProperty("Country_code")
-	private String country_code;
+	private String countryCode;
 
 	@JsonProperty("Region")
 	private String region;
 
 	@JsonProperty("Region_code")
-	private String region_code;
+	private String regionCode;
 
 	@JsonProperty("Sub_region")
-	private String sub_region;
+	private String subRegion;
 	
 	@JsonProperty("City")
 	private String city;
 	
 	@JsonProperty("Kladr_code")
-	private String kladr_code;
+	private String kladrCode;
 	
 	@JsonProperty("Address")
 	private String address;

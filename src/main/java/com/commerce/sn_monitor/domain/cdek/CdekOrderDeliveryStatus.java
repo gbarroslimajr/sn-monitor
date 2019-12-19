@@ -14,10 +14,10 @@ public class CdekOrderDeliveryStatus
     private String name;
 
     @JsonProperty("Date_time")
-    private String date_time;
+    private String dateTime;
 
     @JsonProperty("Reason_code")
-    private String reason_code;
+    private String reasonCode;
 
     @JsonProperty("City")
     private String city;

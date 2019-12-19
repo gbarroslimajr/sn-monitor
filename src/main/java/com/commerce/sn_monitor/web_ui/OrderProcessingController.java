@@ -1,5 +1,6 @@
 package com.commerce.sn_monitor.web_ui;
 
+import com.commerce.sn_monitor.domain.cdek.CdekOrderDeliveryRequest;
 import com.commerce.sn_monitor.domain.cdek.CdekOrderDelivery;
 import com.commerce.sn_monitor.domain.cdek.CdekOrderDeliveryStatusRequest;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryRequest;
@@ -73,4 +74,10 @@ public class OrderProcessingController
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping("/cdek/create")
+    public ResponseEntity<CdekOrderDelivery> sendOrderDeliveryRequest(CdekOrderDeliveryRequest orderRequest)
+    {
+        CdekOrderDelivery response = cdekDeliveryService.makeDeliveryRequest(orderRequest);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

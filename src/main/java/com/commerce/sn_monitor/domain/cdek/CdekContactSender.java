@@ -22,19 +22,19 @@ public class CdekContactSender
 	private List<CdekPhone> phones;
 	
 	@JsonProperty("Passport_series")
-	private String passport_series;
+	private String passportSeries;
 	
 	@JsonProperty("Passport_number")
-	private String passport_number;
+	private String passportNumber;
 	
 	@JsonProperty("Passport_date_of_issue")
-	private String passport_date_of_issue;
+	private String passportDateOfIssue;
 	
 	@JsonProperty("Passport_organization")
-	private String passport_organization;
+	private String passportOrganization;
 	
 	@JsonProperty("Passport_date_of_birth")
-	private String passport_date_of_birth;
+	private String passportDateOfBirth;
 	
 	@JsonProperty("Tin")
 	private String tin;

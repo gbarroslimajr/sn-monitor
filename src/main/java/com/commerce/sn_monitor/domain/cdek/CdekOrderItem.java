@@ -11,7 +11,7 @@ public class CdekOrderItem
     private String name;
 
     @JsonProperty("Ware_Key")
-    private String ware_key;
+    private String wareKey;
 
 	@JsonProperty("Payment")
     private String payment;
@@ -23,25 +23,25 @@ public class CdekOrderItem
     private String weight;
 
     @JsonProperty("Weight_gross")
-    private String weight_gross;
+    private String weightGross;
 
     @JsonProperty("Amount")
     private String amount;
 
     @JsonProperty("Name_i18n")
-    private String name_i18n;
+    private String nameI18n;
 
     @JsonProperty("Brand")
     private String brand;
 
     @JsonProperty("Country_code")
-    private String country_code;
+    private String countryCode;
 
     @JsonProperty("Material")
     private String material;
 
     @JsonProperty("Wifi_gsm")
-    private String wifi_gsm;
+    private String wifiGsm;
 
     @JsonProperty("Url")
     private String url;

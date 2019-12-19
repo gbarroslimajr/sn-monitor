@@ -16,8 +16,8 @@ public class CdekThresholdDelivery
 	private String sum;
 	
 	@JsonProperty("Vat_sum")
-	private String vat_sum;
+	private String vatSum;
 	
 	@JsonProperty("Vat_rate")
-	private String vat_rate;
+	private String vatRate;
 }

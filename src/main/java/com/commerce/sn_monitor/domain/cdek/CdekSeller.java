@@ -19,7 +19,7 @@ public class CdekSeller
 	private String phone;
 
 	@JsonProperty("Ownership_form")
-	private String ownership_form;
+	private String ownershipForm;
 	
 	@JsonProperty("Address")
 	private String address;

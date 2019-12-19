@@ -12,60 +12,41 @@
         <tr>
             <td>
                 Order state and status
-                <form th:action="@{/order/iml/status}" method="get" th:object="${statusRequest}">
-                    Delivery Service<br>
-                    <select name="@type">
-                        <option value="ImlOrderDeliveryStatusRequest">IML</option>
-                        <option value="CdekOrderDeliveryStatusRequest">CDEK</option>
-                    </select>
-                    <br>
+                <form th:action="@{/order/cdek/status}" method="get" th:object="${statusRequest}">
                     Delivery ID<br>
-                    <input type="text" name="deliveryId">
+                    <input type="text" name="orderId">
                     <br>
-                    Delivery start date<br>
-                    <input type="text" name="deliveryStartDate">
-                    <br>
-                    Delivery end date<br>
-                    <input type="text" name="deliveryEndDate">
-                    <br>
-                    Order state<br>
-                    <input type="text" name="orderState">
-                    <br>
-                    Order status<br>
-                    <input type="text" name="orderStatus">
-                    <br>
-                    Delivery region<br>
-                    <input type="text" name="deliveryRegion">
-                    <br>
-                    <input type="submit" value="Get order delivery status">
                 </form>
             </td>
             <td>
                 Make an order
-                <form th:action="@{/order/iml/create}" method="post" th:object="${orderRequest}">
-                    Delivery Service<br>
-                    <select name="@type">
-                        <option value="ImlOrderDeliveryRequest">IML</option>
-                        <option value="CdekOrderDeliveryRequest">CDEK</option>
-                    </select>
-                    <br>
+                <form th:action="@{/order/cdek/create}" method="post" th:object="${orderRequest}">
                     Delivery ID<br>
-                    <input type="text" name="deliveryId">
+                    <input type="text" name="tariffCode">
                     <br>
-                    Delivery start date<br>
-                    <input type="text" name="deliveryStartDate">
+                    STUFF_WRITE<br>
+                    <input type="text" name="value">
                     <br>
-                    Delivery end date<br>
-                    <input type="text" name="deliveryEndDate">
+                    STUFF_WRITE<br>
+                    <input type="text" name="">
                     <br>
-                    Order state<br>
-                    <input type="text" name="orderState">
+                    STUFF_WRITE<br>
+                    <input type="text" name="">
                     <br>
-                    Order status<br>
-                    <input type="text" name="orderStatus">
+                    STUFF_WRITE<br>
+                    <input type="text" name="">
                     <br>
-                    Delivery region<br>
-                    <input type="text" name="deliveryRegion">
+                    STUFF_WRITE<br>
+                    <input type="text" th:field="*{sender.company}">
+                    <br>
+                    STUFF_WRITE<br>
+                    <input type="text" th:field="*{sender.name}">
+                    <br>
+                    STUFF_WRITE<br>
+                    <input type="text" th:field="*{sender.email}">
+                    <br>
+                    STUFF_WRITE<br>
+                    <input type="text" th:field="*{sender.phones}">
                     <br>
                     <input type="submit" value="Create the order">
                 </form>
