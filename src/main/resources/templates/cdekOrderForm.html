@@ -16,37 +16,80 @@
                     Delivery ID<br>
                     <input type="text" name="orderId">
                     <br>
+                    <input type="submit" value="Get order delivery status">
                 </form>
             </td>
             <td>
                 Make an order
                 <form th:action="@{/order/cdek/create}" method="post" th:object="${orderRequest}">
-                    Delivery ID<br>
-                    <input type="text" name="tariffCode">
+                    Tariff Code<br>
+                    <select id="tariffCode" name="tariffCode">
+                        <option th:value=1>Экспресс лайт дверь-дверь</option>
+                        <option th:value=3>Супер-экспресс до 18</option>
+                        <option th:value=5>Экономичный экспресс склад-склад</option>
+                        <option th:value=10>Экспресс лайт склад-склад</option>
+                        <option th:value=11>Экспресс лайт склад-дверь</option>
+                        <option th:value=12>Экспресс лайт дверь-склад</option>
+                        <option th:value=15>Экспресс тяжеловесы склад-склад</option>
+                        <option th:value=16>Экспресс тяжеловесы склад-дверь</option>
+                        <option th:value=17>Экспресс тяжеловесы дверь-склад</option>
+                        <option th:value=18>Экспресс тяжеловесы дверь-дверь</option>
+                        <option th:value=57>Супер-экспресс до 9</option>
+                        <option th:value=58>Супер-экспресс до 10</option>
+                        <option th:value=59>Супер-экспресс до 12</option>
+                        <option th:value=60>Супер-экспресс до 14</option>
+                        <option th:value=61>Супер-экспресс до 16</option>
+                        <option th:value=62>Магистральный экспресс склад-склад</option>
+                        <option th:value=63>Магистральный супер-экспресс склад-склад</option>
+                    </select>
                     <br>
-                    STUFF_WRITE<br>
-                    <input type="text" name="value">
-                    <br>
-                    STUFF_WRITE<br>
-                    <input type="text" name="">
-                    <br>
-                    STUFF_WRITE<br>
-                    <input type="text" name="">
-                    <br>
-                    STUFF_WRITE<br>
-                    <input type="text" name="">
-                    <br>
-                    STUFF_WRITE<br>
+                    sender.company<br>
                     <input type="text" th:field="*{sender.company}">
                     <br>
-                    STUFF_WRITE<br>
+                    sender.name<br>
                     <input type="text" th:field="*{sender.name}">
                     <br>
-                    STUFF_WRITE<br>
+                    sender.email<br>
                     <input type="text" th:field="*{sender.email}">
                     <br>
-                    STUFF_WRITE<br>
-                    <input type="text" th:field="*{sender.phones}">
+                    sender.phones[0].number<br>
+                    <input type="text" th:field="*{sender.phones[0].number}">
+                    <br>
+                    recipient.name<br>
+                    <input type="text" th:field="*{recipient.name}">
+                    <br>
+                    recipient.phones[0].number<br>
+                    <input type="text" th:field="*{recipient.phones[0].number}">
+                    <br>
+                    fromLocation.countryCode<br>
+                    <input type="text" th:field="*{fromLocation.countryCode}">
+                    <br>
+                    fromLocation.address<br>
+                    <input type="text" th:field="*{fromLocation.address}">
+                    <br>
+                    toLocation.countryCode<br>
+                    <input type="text" th:field="*{toLocation.countryCode}">
+                    <br>
+                    toLocation.address<br>
+                    <input type="text" th:field="*{toLocation.address}">
+                    <br>
+                    packages[0].number<br>
+                    <input type="text" th:field="*{packages[0].number}">
+                    <br>
+                    packages[0].weight<br>
+                    <input type="text" th:field="*{packages[0].weight}">
+                    <br>
+                    packages[0].length<br>
+                    <input type="text" th:field="*{packages[0].length}">
+                    <br>
+                    packages[0].width<br>
+                    <input type="text" th:field="*{packages[0].width}">
+                    <br>
+                    packages[0].height<br>
+                    <input type="text" th:field="*{packages[0].height}">
+                    <br>
+                    packages[0].comment<br>
+                    <input type="text" th:field="*{packages[0].comment}">
                     <br>
                     <input type="submit" value="Create the order">
                 </form>

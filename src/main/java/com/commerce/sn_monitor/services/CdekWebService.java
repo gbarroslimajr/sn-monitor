@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 @Service
 public class CdekWebService
 {
@@ -57,7 +60,7 @@ public class CdekWebService
         CdekAuthToken token = getAuthToken();
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer" + token.getAccessToken());
+        headers.set("Authorization", "Bearer " + token.getAccessToken());
 
         return headers;
     }

@@ -7,6 +7,9 @@ import lombok.Data;
 @Data
 public class CdekOrderDeliveryRequest
 {
+	@JsonProperty("type")
+	private Integer type = 2;
+
 	@JsonProperty("Number")
 	private String number;
 

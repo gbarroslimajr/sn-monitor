@@ -9,6 +9,7 @@ import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatus;
 import com.commerce.sn_monitor.domain.iml.ImlOrderDeliveryStatusRequest;
 import com.commerce.sn_monitor.services.CdekWebService;
 import com.commerce.sn_monitor.services.ImlWebService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@Slf4j
 @Controller
 @RequestMapping("/order")
 public class OrderProcessingController
@@ -35,6 +37,12 @@ public class OrderProcessingController
         this.cdekDeliveryService = cdekDeliveryService;
     }
 
+    @GetMapping()
+    public String redirectHome()
+    {
+        return "redirect:/";
+    }
+
     @GetMapping("/iml")
     public String imlOrderForm(Model model)
     {
@@ -47,6 +55,8 @@ public class OrderProcessingController
     @GetMapping("/cdek")
     public String cdekOrderForm(Model model)
     {
+        model.addAttribute("orderRequest", new CdekOrderDeliveryRequest());
+
         return "cdekOrderForm";
     }
 
