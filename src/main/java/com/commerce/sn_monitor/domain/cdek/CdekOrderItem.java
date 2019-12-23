@@ -7,42 +7,42 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Data
 public class CdekOrderItem
 {
-	@JsonProperty("Name")
+	@JsonProperty("name")
     private String name;
 
-    @JsonProperty("Ware_Key")
+    @JsonProperty("ware_Key")
     private String wareKey;
 
-	@JsonProperty("Payment")
+	@JsonProperty("payment")
     private String payment;
 
-    @JsonProperty("Cost")
+    @JsonProperty("cost")
     private String cost;
 
-	@JsonProperty("Weight")
+	@JsonProperty("weight")
     private String weight;
 
-    @JsonProperty("Weight_gross")
+    @JsonProperty("weight_gross")
     private String weightGross;
 
-    @JsonProperty("Amount")
+    @JsonProperty("amount")
     private String amount;
 
-    @JsonProperty("Name_i18n")
+    @JsonProperty("name_i18n")
     private String nameI18n;
 
-    @JsonProperty("Brand")
+    @JsonProperty("brand")
     private String brand;
 
-    @JsonProperty("Country_code")
+    @JsonProperty("country_code")
     private String countryCode;
 
-    @JsonProperty("Material")
+    @JsonProperty("material")
     private String material;
 
-    @JsonProperty("Wifi_gsm")
+    @JsonProperty("wifi_gsm")
     private String wifiGsm;
 
-    @JsonProperty("Url")
+    @JsonProperty("url")
     private String url;
 }

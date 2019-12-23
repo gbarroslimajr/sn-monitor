@@ -9,9 +9,9 @@ import lombok.Data;
 @Data
 public class CdekService
 {
-	@JsonProperty("Code")
+	@JsonProperty("code")
 	private String code;
 	
-	@JsonProperty("Parameter")
+	@JsonProperty("parameter")
 	private String parameter;
 }

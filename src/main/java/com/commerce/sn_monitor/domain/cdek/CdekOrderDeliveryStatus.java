@@ -7,18 +7,18 @@ import lombok.Data;
 @Data
 public class CdekOrderDeliveryStatus
 {
-    @JsonProperty("Code")
+    @JsonProperty("code")
     private String code;
 
-    @JsonProperty("Name")
+    @JsonProperty("name")
     private String name;
 
-    @JsonProperty("Date_time")
+    @JsonProperty("date_time")
     private String dateTime;
 
-    @JsonProperty("Reason_code")
+    @JsonProperty("reason_code")
     private String reasonCode;
 
-    @JsonProperty("City")
+    @JsonProperty("city")
     private String city;
 }

@@ -9,33 +9,33 @@ import java.util.List;
 @Data
 public class CdekContactSender
 {
-	@JsonProperty("Company")
+	@JsonProperty("company")
 	private String company;
 	
-	@JsonProperty("Name")
+	@JsonProperty("name")
 	private String name;
 	
-	@JsonProperty("Email")
+	@JsonProperty("email")
 	private String email;
 
-	@JsonProperty("Phones")
+	@JsonProperty("phones")
 	private List<CdekPhone> phones;
 	
-	@JsonProperty("Passport_series")
+	@JsonProperty("passport_series")
 	private String passportSeries;
 	
-	@JsonProperty("Passport_number")
+	@JsonProperty("passport_number")
 	private String passportNumber;
 	
-	@JsonProperty("Passport_date_of_issue")
+	@JsonProperty("passport_date_of_issue")
 	private String passportDateOfIssue;
 	
-	@JsonProperty("Passport_organization")
+	@JsonProperty("passport_organization")
 	private String passportOrganization;
 	
-	@JsonProperty("Passport_date_of_birth")
+	@JsonProperty("passport_date_of_birth")
 	private String passportDateOfBirth;
 	
-	@JsonProperty("Tin")
+	@JsonProperty("tin")
 	private String tin;
 }

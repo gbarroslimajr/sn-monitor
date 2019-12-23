@@ -10,63 +10,63 @@ public class CdekOrderDeliveryRequest
 	@JsonProperty("type")
 	private Integer type = 2;
 
-	@JsonProperty("Number")
+	@JsonProperty("number")
 	private String number;
 
-	@JsonProperty("Tariff_code")
+	@JsonProperty("tariff_code")
 	private String tariffCode;
 	
-	@JsonProperty("Comment")
+	@JsonProperty("comment")
 	private String comment;
 
-	@JsonProperty("Shipment_point")
+	@JsonProperty("shipment_point")
 	private String shipmentPoint;
 	
-	@JsonProperty("Delivery_point")
+	@JsonProperty("delivery_point")
 	private String deliveryPoint;
 
-	@JsonProperty("Items_cost_currency")
+	@JsonProperty("items_cost_currency")
 	private String itemsCostCurrency;
 	
-	@JsonProperty("Recipient_currency")
+	@JsonProperty("recipient_currency")
 	private String recipientCurrency;
 
-	@JsonProperty("Date_invoice")
+	@JsonProperty("date_invoice")
 	private String dateInvoice;
 
-	@JsonProperty("Shipper_name")
+	@JsonProperty("shipper_name")
 	private String shipperName;
 	
-	@JsonProperty("Shipper_address")
+	@JsonProperty("shipper_address")
 	private String shipperAddress;
 
-	@JsonProperty("Delivery_recipient_cost")
+	@JsonProperty("delivery_recipient_cost")
 	private CdekMoney deliveryRecipientCost;
 
-	@JsonProperty("Value")
+	@JsonProperty("value")
 	private CdekMoney value;
 	
-	@JsonProperty("Delivery_recipient_cost_adv")
+	@JsonProperty("delivery_recipient_cost_adv")
 	private List<CdekThresholdDelivery> deliveryRecipientCostAdv;
 
-	@JsonProperty("Sender")
+	@JsonProperty("sender")
 	private CdekContactSender sender;
 
-	@JsonProperty("Seller")
+	@JsonProperty("seller")
 	private CdekSeller seller;
 
-	@JsonProperty("Recipient")
+	@JsonProperty("recipient")
 	private CdekContactSender recipient;
 
-	@JsonProperty("From_location")
+	@JsonProperty("from_location")
 	private CdekLocation fromLocation;
 	
-	@JsonProperty("To_location")
+	@JsonProperty("to_location")
 	private CdekLocation toLocation;
 
-	@JsonProperty("Services")
+	@JsonProperty("services")
 	private List<CdekService> services;
 
-	@JsonProperty("Packages")
+	@JsonProperty("packages")
 	private List<CdekPackage> packages;
 }

@@ -9,18 +9,18 @@ import lombok.Data;
 @Data
 public class CdekSeller
 {
-	@JsonProperty("Name")
+	@JsonProperty("name")
 	private String name;
 	
-	@JsonProperty("Inn")
+	@JsonProperty("inn")
 	private String inn;
 
-	@JsonProperty("Phone")
+	@JsonProperty("phone")
 	private String phone;
 
-	@JsonProperty("Ownership_form")
+	@JsonProperty("ownership_form")
 	private String ownershipForm;
 	
-	@JsonProperty("Address")
+	@JsonProperty("address")
 	private String address;
 }

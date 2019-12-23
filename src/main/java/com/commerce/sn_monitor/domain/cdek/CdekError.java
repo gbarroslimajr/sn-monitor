@@ -9,9 +9,9 @@ import java.util.List;
 @Data
 public class CdekError
 {
-	@JsonProperty("Code")
+	@JsonProperty("code")
 	private String code;
 	
-	@JsonProperty("Message")
+	@JsonProperty("message")
 	private String message;
 }

@@ -9,9 +9,9 @@ import lombok.Data;
 @Data
 public class CdekPhone
 {
-	@JsonProperty("Number")
+	@JsonProperty("number")
 	private String number;
 	
-	@JsonProperty("Additional")
+	@JsonProperty("additional")
 	private String additional;
 }

@@ -9,24 +9,24 @@ import lombok.Data;
 @Data
 public class CdekPackage
 {
-	@JsonProperty("Number")
+	@JsonProperty("number")
 	private String number;
 	
-	@JsonProperty("Weight")
+	@JsonProperty("weight")
 	private String weight;
 	
-	@JsonProperty("Length")
+	@JsonProperty("length")
 	private String length;
 
-	@JsonProperty("Width")
+	@JsonProperty("width")
 	private String width;
 	
-	@JsonProperty("Height")
+	@JsonProperty("height")
 	private String height;
 	
-	@JsonProperty("Comment")
+	@JsonProperty("comment")
 	private String comment;
 
-	@JsonProperty("Items")
+	@JsonProperty("items")
 	private List<CdekOrderItem> items;
 }
