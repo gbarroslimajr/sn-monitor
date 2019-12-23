@@ -79,25 +79,50 @@ public class ImlWebService
 
     public List<? extends Map<String, String>> getServicesData()
     {
-        String serviceCodesEndpoint = conf.VOC_ENDPOINT + "/service";
+        return getVocabularyData("/service");
+    }
+
+    public List<? extends Map<String, String>> getRegionsData()
+    {
+        return getVocabularyData("/region");
+    }
+
+    public List<? extends Map<String, String>> getPickupPointsData()
+    {
+        return getVocabularyData("/sd");
+    }
+
+    public List<? extends Map<String, String>> getOrderStatusData()
+    {
+        return getVocabularyData("/orderstatus");
+    }
+
+    public List<? extends Map<String, String>> getDeliveryStatusData()
+    {
+        return getVocabularyData("/deliverystatus");
+    }
+
+    private List<? extends Map<String, String>> getVocabularyData(String vocabularyEndpoint)
+    {
+        String vocDataEndpoint = conf.VOC_ENDPOINT + vocabularyEndpoint;
 
         HttpHeaders headers = getRequiredHeaders();
         HttpEntity requestEntity = new HttpEntity(headers);
 
-        ResponseEntity res = rest.exchange(
-            serviceCodesEndpoint,
-            HttpMethod.GET,
-            requestEntity,
-            new ParameterizedTypeReference<ArrayList<HashMap<String, String>>>() {}
+        ResponseEntity<ArrayList<HashMap<String, String>>> res = rest.exchange(
+                vocDataEndpoint,
+                HttpMethod.GET,
+                requestEntity,
+                new ParameterizedTypeReference<ArrayList<HashMap<String, String>>>() {}
         );
 
         if (res.getStatusCode() != HttpStatus.OK || res.getBody() == null)
         {
-            log.error("No response from " + serviceCodesEndpoint);
+            log.error("No response from " + vocDataEndpoint + res.getStatusCode().toString());
             return new ArrayList<>();
         }
 
-        return (ArrayList<HashMap<String, String>>)res.getBody();
+        return res.getBody();
     }
 
     private HttpHeaders getRequiredHeaders()

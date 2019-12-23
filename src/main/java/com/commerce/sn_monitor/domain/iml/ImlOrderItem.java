@@ -36,7 +36,7 @@ public class ImlOrderItem implements OrderItem
     private String statisticalValueLine;
 
     @JsonProperty("itemQuantity")
-    private String quantity;
+    private String quantity = "1";
 
     @JsonProperty("deliveryService")
     private String deliveryService;
@@ -51,7 +51,7 @@ public class ImlOrderItem implements OrderItem
     private String allowed;
 
     @JsonProperty("VATRate")
-    private String vATRate;
+    private String vatRate;
 
     @JsonProperty("Length")
     private String length;

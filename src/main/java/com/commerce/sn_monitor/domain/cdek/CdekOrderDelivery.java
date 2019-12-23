@@ -77,7 +77,7 @@ public class CdekOrderDelivery
 	private List<CdekPackage> packages;
 	
 	@JsonProperty("statuses")
-	private CdekOrderDeliveryStatus statuses;
+	private List<CdekOrderDeliveryStatus> statuses;
 	
 	@JsonProperty("errors")
 	private List<CdekError> errors;

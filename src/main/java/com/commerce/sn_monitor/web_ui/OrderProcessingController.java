@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -46,8 +48,17 @@ public class OrderProcessingController
     @GetMapping("/iml")
     public String imlOrderForm(Model model)
     {
-        ArrayList<HashMap<String, String>> services = (ArrayList<HashMap<String, String>>) imlDeliveryService.getServicesData();
+        List<? extends Map<String, String>> services = imlDeliveryService.getServicesData();
+        List<? extends Map<String, String>> deliveryStatuses = imlDeliveryService.getDeliveryStatusData();
+        List<? extends Map<String, String>> orderStatuses = imlDeliveryService.getOrderStatusData();
+        List<? extends Map<String, String>> regions = imlDeliveryService.getRegionsData();
+        List<? extends Map<String, String>> pickupPoints = imlDeliveryService.getPickupPointsData();
+
         model.addAttribute("services", services);
+        model.addAttribute("deliveryStatuses", deliveryStatuses);
+        model.addAttribute("orderStatuses", orderStatuses);
+        model.addAttribute("regions", regions);
+        model.addAttribute("pickupPoints", pickupPoints);
 
         return "imlOrderForm";
     }

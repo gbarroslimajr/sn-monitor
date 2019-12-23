@@ -17,6 +17,13 @@
                     Delivery ID<br>
                     <input type="text" name="deliveryId">
                     <br>
+                    Service Code<br>
+                    <select name="job">
+                        <option th:each="service : ${services}"
+                                th:value="${service['Code']}"
+                                th:text="${service['Description']}"></option>
+                    </select>
+                    <br>
                     Delivery start date<br>
                     <input type="text" name="deliveryStartDate">
                     <br>
@@ -24,13 +31,32 @@
                     <input type="text" name="deliveryEndDate">
                     <br>
                     Order state<br>
-                    <input type="text" name="orderState">
+                    <select name="orderState">
+                        <option th:each="deliveryStatus : ${deliveryStatuses}"
+                                th:value="${deliveryStatus['Code']}"
+                                th:text="${deliveryStatus['Description']}"></option>
+                    </select>
                     <br>
                     Order status<br>
-                    <input type="text" name="orderStatus">
+                    <select name="orderStatus">
+                        <option th:each="orderStatus : ${orderStatuses}"
+                                th:value="${orderStatus['Code']}"
+                                th:text="${orderStatus['Description']}"></option>
+                    </select>
                     <br>
                     Delivery region<br>
-                    <input type="text" name="deliveryRegion">
+                    <select name="deliveryRegion">
+                        <option th:each="region : ${regions}"
+                                th:value="${region['Code']}"
+                                th:text="${region['Description']}"></option>
+                    </select>
+                    <br>
+                    Origin region<br>
+                    <select name="regionFrom">
+                        <option th:each="region : ${regions}"
+                                th:value="${region['Code']}"
+                                th:text="${region['Description']}"></option>
+                    </select>
                     <br>
                     <input type="submit" value="Get order delivery status">
                 </form>
@@ -40,29 +66,76 @@
                 <form th:action="@{/order/iml/create}" method="post" th:object="${orderRequest}">
                     <br>
                     Service Code<br>
-                    <select id="job" name="job">
+                    <select name="job">
                         <option th:each="service : ${services}"
                                 th:value="${service['Code']}"
                                 th:text="${service['Description']}"></option>
                     </select>
                     <br>
                     Delivery ID<br>
-                    <input type="text" name="deliveryId">
+                    <input type="text" name="customerOrder">
                     <br>
-                    Delivery start date<br>
-                    <input type="text" name="deliveryStartDate">
-                    <br>
-                    Delivery end date<br>
-                    <input type="text" name="deliveryEndDate">
+                    Delivery date<br>
+                    <input type="text" name="deliveryDate">
                     <br>
                     Order state<br>
-                    <input type="text" name="orderState">
+                    <select name="orderState">
+                        <option th:each="deliveryStatus : ${deliveryStatuses}"
+                                th:value="${deliveryStatus['Code']}"
+                                th:text="${deliveryStatus['Description']}"></option>
+                    </select>
                     <br>
                     Order status<br>
-                    <input type="text" name="orderStatus">
+                    <select name="orderStatus">
+                        <option th:each="orderStatus : ${orderStatuses}"
+                                th:value="${orderStatus['Code']}"
+                                th:text="${orderStatus['Description']}"></option>
+                    </select>
                     <br>
                     Delivery region<br>
-                    <input type="text" name="deliveryRegion">
+                    <select name="regionCodeTo">
+                        <option th:each="region : ${regions}"
+                                th:value="${region['Code']}"
+                                th:text="${region['Description']}"></option>
+                    </select>
+                    <br>
+                    Origin region<br>
+                    <select name="regionCodeFrom">
+                        <option th:each="region : ${regions}"
+                                th:value="${region['Code']}"
+                                th:text="${region['Description']}"></option>
+                    </select>
+                    <br>
+                    Delivery pickup point<br>
+                    <select name="deliveryPoint">
+                        <option th:each="pickupPoint : ${pickupPoints}"
+                                th:value="${pickupPoint['RequestCode']}"
+                                th:text="${pickupPoint['RegionCode'] + ' ' + pickupPoint['Address']}"></option>
+                    </select>
+                    <br>
+                    Contact name<br>
+                    <input type="text" name="contact">
+                    <br>
+                    Contact phone<br>
+                    <input type="text" name="phone">
+                    <br>
+                    Contact address<br>
+                    <input type="text" name="address">
+                    <br>
+                    Item id<br>
+                    <input type="text" th:field="*{goodItems[0].id}">
+                    <br>
+                    Item name<br>
+                    <input type="text" th:field="*{goodItems[0].name}">
+                    <br>
+                    Item weight<br>
+                    <input type="text" th:field="*{goodItems[0].weight}">
+                    <br>
+                    Item version<br>
+                    <input type="text" th:field="*{goodItems[0].version}">
+                    <br>
+                    Item cost<br>
+                    <input type="text" th:field="*{goodItems[0].cost}">
                     <br>
                     <input type="submit" value="Create the order">
                 </form>
