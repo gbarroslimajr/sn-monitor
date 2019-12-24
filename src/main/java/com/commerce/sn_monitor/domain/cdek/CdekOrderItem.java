@@ -14,19 +14,19 @@ public class CdekOrderItem
     private String wareKey;
 
 	@JsonProperty("payment")
-    private String payment;
+    private CdekMoney payment;
 
     @JsonProperty("cost")
-    private String cost;
+    private Float cost;
 
 	@JsonProperty("weight")
-    private String weight;
+    private Integer weight;
 
     @JsonProperty("weight_gross")
-    private String weightGross;
+    private Integer weightGross;
 
     @JsonProperty("amount")
-    private String amount;
+    private Integer amount;
 
     @JsonProperty("name_i18n")
     private String nameI18n;
@@ -41,7 +41,7 @@ public class CdekOrderItem
     private String material;
 
     @JsonProperty("wifi_gsm")
-    private String wifiGsm;
+    private Boolean wifiGsm;
 
     @JsonProperty("url")
     private String url;

@@ -13,16 +13,16 @@ public class CdekPackage
 	private String number;
 	
 	@JsonProperty("weight")
-	private String weight;
+	private Integer weight;
 	
 	@JsonProperty("length")
-	private String length;
+	private Integer length;
 
 	@JsonProperty("width")
-	private String width;
+	private Integer width;
 	
 	@JsonProperty("height")
-	private String height;
+	private Integer height;
 	
 	@JsonProperty("comment")
 	private String comment;

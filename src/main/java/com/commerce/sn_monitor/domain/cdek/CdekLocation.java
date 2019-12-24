@@ -10,7 +10,7 @@ import lombok.Data;
 public class CdekLocation
 {
 	@JsonProperty("code")
-	private String code;
+	private Integer code;
 	
 	@JsonProperty("fias_guid")
 	private String fiasGuid;
@@ -19,10 +19,10 @@ public class CdekLocation
 	private String postalCode;
 	
 	@JsonProperty("longitude")
-	private String longitude;
+	private Float longitude;
 	
 	@JsonProperty("latitude")
-	private String latitude;
+	private Float latitude;
 	
 	@JsonProperty("country_code")
 	private String countryCode;
@@ -31,7 +31,7 @@ public class CdekLocation
 	private String region;
 
 	@JsonProperty("region_code")
-	private String regionCode;
+	private Integer regionCode;
 
 	@JsonProperty("sub_region")
 	private String subRegion;

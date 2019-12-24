@@ -10,8 +10,8 @@ import lombok.Data;
 public class CdekService
 {
 	@JsonProperty("code")
-	private String code;
+	private Integer code;
 	
 	@JsonProperty("parameter")
-	private String parameter;
+	private Float parameter;
 }

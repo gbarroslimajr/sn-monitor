@@ -10,11 +10,11 @@ import lombok.Data;
 public class CdekMoney
 {
 	@JsonProperty("value")
-	private String value;
+	private Float value;
 	
 	@JsonProperty("vat_sum")
-	private String vatSum;
+	private Float vatSum;
 	
 	@JsonProperty("vat_rate")
-	private String vatRate;
+	private Integer vatRate;
 }

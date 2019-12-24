@@ -20,22 +20,4 @@ public class CdekContactSender
 
 	@JsonProperty("phones")
 	private List<CdekPhone> phones;
-	
-	@JsonProperty("passport_series")
-	private String passportSeries;
-	
-	@JsonProperty("passport_number")
-	private String passportNumber;
-	
-	@JsonProperty("passport_date_of_issue")
-	private String passportDateOfIssue;
-	
-	@JsonProperty("passport_organization")
-	private String passportOrganization;
-	
-	@JsonProperty("passport_date_of_birth")
-	private String passportDateOfBirth;
-	
-	@JsonProperty("tin")
-	private String tin;
 }

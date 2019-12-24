@@ -14,7 +14,7 @@ public class CdekOrderDeliveryRequest
 	private String number;
 
 	@JsonProperty("tariff_code")
-	private String tariffCode;
+	private Integer tariffCode;
 	
 	@JsonProperty("comment")
 	private String comment;
@@ -32,7 +32,7 @@ public class CdekOrderDeliveryRequest
 	private String recipientCurrency;
 
 	@JsonProperty("date_invoice")
-	private String dateInvoice;
+	private Date dateInvoice;
 
 	@JsonProperty("shipper_name")
 	private String shipperName;
@@ -42,9 +42,6 @@ public class CdekOrderDeliveryRequest
 
 	@JsonProperty("delivery_recipient_cost")
 	private CdekMoney deliveryRecipientCost;
-
-	@JsonProperty("value")
-	private CdekMoney value;
 	
 	@JsonProperty("delivery_recipient_cost_adv")
 	private List<CdekThresholdDelivery> deliveryRecipientCostAdv;
@@ -56,7 +53,7 @@ public class CdekOrderDeliveryRequest
 	private CdekSeller seller;
 
 	@JsonProperty("recipient")
-	private CdekContactSender recipient;
+	private CdekContactRecipient recipient;
 
 	@JsonProperty("from_location")
 	private CdekLocation fromLocation;

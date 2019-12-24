@@ -10,14 +10,14 @@ import lombok.Data;
 public class CdekThresholdDelivery
 {
 	@JsonProperty("threshold")
-	private String threshold;
+	private Integer threshold;
 	
 	@JsonProperty("sum")
-	private String sum;
+	private Float sum;
 	
 	@JsonProperty("vat_sum")
-	private String vatSum;
+	private Float vatSum;
 	
 	@JsonProperty("vat_rate")
-	private String vatRate;
+	private Integer vatRate;
 }
