@@ -28,13 +28,13 @@ public class CdekContactRecipient
 	private String passportNumber;
 	
 	@JsonProperty("passport_date_of_issue")
-	private Date passportDateOfIssue;
+	private String passportDateOfIssue;
 	
 	@JsonProperty("passport_organization")
 	private String passportOrganization;
 	
 	@JsonProperty("passport_date_of_birth")
-	private Date passportDateOfBirth;
+	private String passportDateOfBirth;
 	
 	@JsonProperty("tin")
 	private String tin;

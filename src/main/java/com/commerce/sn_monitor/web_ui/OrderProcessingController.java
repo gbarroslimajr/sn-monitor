@@ -59,6 +59,7 @@ public class OrderProcessingController
         model.addAttribute("orderStatuses", orderStatuses);
         model.addAttribute("regions", regions);
         model.addAttribute("pickupPoints", pickupPoints);
+        model.addAttribute("orderRequest", new ImlOrderDeliveryRequest());
 
         return "imlOrderForm";
     }
@@ -84,6 +85,9 @@ public class OrderProcessingController
     public ResponseEntity<CdekOrderDelivery> fetchOrderStatus(CdekOrderDeliveryStatusRequest statusRequest)
     {
         CdekOrderDelivery status = cdekDeliveryService.getOrdersStatus(statusRequest);
+
+        if (status == null)
+            return new ResponseEntity<>(new CdekOrderDelivery(), HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<>(status, HttpStatus.OK);
     }

@@ -14,7 +14,7 @@ public class CdekOrderDeliveryStatus
     private String name;
 
     @JsonProperty("date_time")
-    private Date dateTime;
+    private String dateTime;
 
     @JsonProperty("reason_code")
     private String reasonCode;

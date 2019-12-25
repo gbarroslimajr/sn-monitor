@@ -32,7 +32,7 @@ public class CdekOrderDeliveryRequest
 	private String recipientCurrency;
 
 	@JsonProperty("date_invoice")
-	private Date dateInvoice;
+	private String dateInvoice;
 
 	@JsonProperty("shipper_name")
 	private String shipperName;

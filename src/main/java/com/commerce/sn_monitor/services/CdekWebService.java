@@ -2,6 +2,7 @@ package com.commerce.sn_monitor.services;
 
 import com.commerce.sn_monitor.configs.CdekApiConfig;
 import com.commerce.sn_monitor.domain.cdek.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
@@ -9,6 +10,7 @@ import org.springframework.http.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@Slf4j
 @Service
 public class CdekWebService
 {
@@ -44,6 +46,7 @@ public class CdekWebService
         HttpHeaders headers = getRequiredHeaders();
         HttpEntity requestEntity = new HttpEntity(headers);
 
+        log.info(statusRequest.getOrderId());
         ResponseEntity<CdekOrderDelivery> response = rest.exchange(
                 statusEndpoint,
                 HttpMethod.GET,

@@ -57,7 +57,7 @@ public class ImlWebService
 
     public List<ImlOrderDeliveryStatus> getImlOrdersStatus(ImlOrderDeliveryStatusRequest statusRequest)
     {
-        String statusEndpoint = conf.ENDPOINT + "/GetStatuses";
+        String statusEndpoint = conf.ENDPOINT + "/GetOrders";
 
         HttpHeaders headers = getRequiredHeaders();
         HttpEntity requestEntity = new HttpEntity(statusRequest, headers);

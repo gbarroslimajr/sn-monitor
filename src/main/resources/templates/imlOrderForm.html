@@ -21,7 +21,7 @@
                     <select name="job">
                         <option th:each="service : ${services}"
                                 th:value="${service['Code']}"
-                                th:text="${service['Description']}"></option>
+                                th:text="${service['Description'] + ' (' + service['Code'] + ')'}"></option>
                     </select>
                     <br>
                     Delivery start date<br>
@@ -69,7 +69,7 @@
                     <select name="job">
                         <option th:each="service : ${services}"
                                 th:value="${service['Code']}"
-                                th:text="${service['Description']}"></option>
+                                th:text="${service['Description'] + ' (' + service['Code'] + ')'}"></option>
                     </select>
                     <br>
                     Delivery ID<br>
@@ -122,6 +122,12 @@
                     Contact address<br>
                     <input type="text" name="address">
                     <br>
+                    Order value<br>
+                    <input type="text" name="amount">
+                    <br>
+                    Order evaluated cost<br>
+                    <input type="text" name="valuatedAmount">
+                    <br>
                     Item id<br>
                     <input type="text" th:field="*{goodItems[0].id}">
                     <br>
@@ -136,6 +142,9 @@
                     <br>
                     Item cost<br>
                     <input type="text" th:field="*{goodItems[0].cost}">
+                    <br>
+                    Evaluated item cost<br>
+                    <input type="text" th:field="*{goodItems[0].statisticalValueLine}">
                     <br>
                     <input type="submit" value="Create the order">
                 </form>
